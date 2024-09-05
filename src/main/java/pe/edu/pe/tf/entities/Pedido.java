@@ -17,7 +17,7 @@ public class Pedido {
     private LocalDate Fecha_solicitud;
     @Column(name = "Fecha_entrega",nullable = false,length = 10)
     private LocalDateTime Fecha_entrega;
-    @Column(name = "I_fecha_creacion\n",nullable = false,length = 10)
+    @Column(name = "I_fecha_creacion",nullable = false,length = 10)
     private LocalDate I_fecha_creacion;
     @Column(name = "I_creado_por",nullable = false, length = 40)
     private String I_creado_por;
