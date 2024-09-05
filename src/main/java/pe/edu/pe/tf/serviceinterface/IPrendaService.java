@@ -11,4 +11,5 @@ public interface IPrendaService {
     public Prenda listId(int id);
     public void update(Prenda p);
     public void delete(int id);
+    public List<String[]> prendasxtienda();
 }

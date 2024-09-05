@@ -3,14 +3,12 @@ package pe.edu.pe.tf.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.pe.tf.dtos.Det_PedidoDTO;
-import pe.edu.pe.tf.dtos.PrendaDTO;
-import pe.edu.pe.tf.dtos.TiendaDTO;
-import pe.edu.pe.tf.dtos.UsuarioDTO;
+import pe.edu.pe.tf.dtos.*;
 import pe.edu.pe.tf.entities.Prenda;
 import pe.edu.pe.tf.repositories.IPrendaRepository;
 import pe.edu.pe.tf.serviceinterface.IPrendaService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,5 +47,18 @@ public class PrendaController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         pR.delete(id);
+    }
+
+    @GetMapping("/cantidad_prendasxtienda")
+    public List<CantPrendaxTiendaDTO> cantidadController(){
+        List<String[]> lista = pR.prendasxtienda();
+        List<CantPrendaxTiendaDTO>listaDTO=new ArrayList<>();
+        for(String[] columna:lista){
+            CantPrendaxTiendaDTO dto=new CantPrendaxTiendaDTO();
+            dto.setTienda(columna[0]);
+            dto.setCantidad_de_prendas(Integer.parseInt(columna[1]));
+            listaDTO.add(dto);
+        }
+        return listaDTO;
     }
 }

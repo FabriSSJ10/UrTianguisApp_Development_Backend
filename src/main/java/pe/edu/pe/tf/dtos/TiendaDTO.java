@@ -4,10 +4,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import pe.edu.pe.tf.entities.Usuario;
 
+import java.math.BigDecimal;
+
 public class TiendaDTO {
     private int Id_tienda;
     private String Nombre;
-    private String Ubicacion;
+    private BigDecimal Altitud;
+    private BigDecimal Latitud;
     private String Logo;
     private Usuario Us;
 
@@ -27,12 +30,20 @@ public class TiendaDTO {
         Nombre = nombre;
     }
 
-    public String getUbicacion() {
-        return Ubicacion;
+    public BigDecimal getAltitud() {
+        return Altitud;
     }
 
-    public void setUbicacion(String ubicacion) {
-        Ubicacion = ubicacion;
+    public void setAltitud(BigDecimal altitud) {
+        Altitud = altitud;
+    }
+
+    public BigDecimal getLatitud() {
+        return Latitud;
+    }
+
+    public void setLatitud(BigDecimal latitud) {
+        Latitud = latitud;
     }
 
     public String getLogo() {

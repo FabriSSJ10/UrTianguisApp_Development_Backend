@@ -12,4 +12,5 @@ public interface IDet_PedidoService {
     public Det_Pedido listId(int id);
     public void update(Det_Pedido p);
     public void delete(int id);
+    List<String[]> TotalxPrenda();
 }

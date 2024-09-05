@@ -11,5 +11,9 @@ public interface IPagoService {
     public Pago listId(int id);
     public void update(Pago p);
     public void delete(int id);
+    List<String[]> sumBySexService();
+    List<String[]> sumByDepartmentService();
+    List<String[]> pagosxtipodepago();
+    List<String[]> pgsagrupadosxmesxmetodo();
 }
 
