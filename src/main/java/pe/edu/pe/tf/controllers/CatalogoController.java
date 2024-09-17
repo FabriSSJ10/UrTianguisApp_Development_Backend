@@ -2,6 +2,7 @@ package pe.edu.pe.tf.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.CatalogoDTO;
 import pe.edu.pe.tf.dtos.Det_PedidoDTO;
@@ -14,18 +15,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@PreAuthorize("hasAuthority('CLIENTE')")
 @RequestMapping("/catalogo")
 public class CatalogoController {
     @Autowired
     private ICatalogoService cP;
-    @GetMapping
+    @GetMapping("/listarCatalogos")
     public List<CatalogoDTO> listar(){
         return cP.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
             return m.map(x,CatalogoDTO.class);
         }).collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping("/registrarCatalogos")
     public void insertar(@RequestBody CatalogoDTO dto){
         ModelMapper m=new ModelMapper();
         Catalogo ve=m.map(dto, Catalogo.class);
@@ -37,7 +39,7 @@ public class CatalogoController {
         CatalogoDTO dto=m.map(cP.listId(id),CatalogoDTO.class);
         return dto;
     }
-    @PutMapping
+    @PutMapping("/modificarCatalogos")
     public void modificar(@RequestBody CatalogoDTO dto){
         ModelMapper m=new ModelMapper();
         Catalogo ve=m.map(dto,Catalogo.class);

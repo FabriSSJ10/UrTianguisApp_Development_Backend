@@ -9,9 +9,16 @@ import java.util.List;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario,Integer> {
-    @Query(" SELECT TO_CHAR(us.I_fecha_creacion, 'YYYY-MM') AS mes, COUNT(us) AS totalUsuarios " +
-            " FROM Usuario us " +
-            " GROUP BY TO_CHAR(us.I_fecha_creacion, 'YYYY-MM') " +
-            " ORDER BY totalUsuarios ASC ")
+    public Usuario findOneByUsername (String username);
+
+    @Query(" SELECT \n" +
+            "    TO_CHAR(us.I_fecha_creacion, 'MM') AS mes, \n" +
+            "    COUNT(us) AS total_Usuarios \n" +
+            " FROM \n" +
+            "    Usuario us \n" +
+            " GROUP BY \n" +
+            "    TO_CHAR(us.I_fecha_creacion, 'MM') \n" +
+            " ORDER BY \n" +
+            "    total_Usuarios ASC \n ")
     List<Object[]> mesMenosUsuarios();
 }

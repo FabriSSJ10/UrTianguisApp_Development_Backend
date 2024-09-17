@@ -3,6 +3,7 @@ package pe.edu.pe.tf.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.Tipo_OcasionDTO;
 import pe.edu.pe.tf.dtos.Tipo_PagoDTO;
@@ -14,18 +15,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/tipo_Ocasion")
+@PreAuthorize("hasAuthority('ADMINISTRADOR')")
+@RequestMapping("/tipo_ocasion")
 public class Tipo_OcasionController {
     @Autowired
     private ITipo_OcasionService toS;
-    @PostMapping
+    @PostMapping("/registrarTipo_ocasion")
     public void insertar(@RequestBody Tipo_OcasionDTO dto){
         ModelMapper m=new ModelMapper();
         Tipo_Ocasion ve=m.map(dto,Tipo_Ocasion.class);
         toS.insert(ve);
     }
 
-    @GetMapping
+    @GetMapping("/listarTipo_ocasion")
     public List<Tipo_OcasionDTO> listar(){
         return toS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -43,7 +45,7 @@ public class Tipo_OcasionController {
         return dto;
     }
 
-    @PutMapping
+    @PutMapping("/modificarTipo_ocasion")
     public  void modificar(@RequestBody Tipo_OcasionDTO dto){
         ModelMapper m=new ModelMapper();
         Tipo_Ocasion d = m.map(dto, Tipo_Ocasion.class);

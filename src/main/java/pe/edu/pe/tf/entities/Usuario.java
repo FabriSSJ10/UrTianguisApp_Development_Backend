@@ -1,12 +1,15 @@
 package pe.edu.pe.tf.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table(name="usuario")
-public class Usuario {
+@Table(name = "usuario")
+public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id_usuario;
@@ -20,14 +23,17 @@ public class Usuario {
     private String Sexo;
     @Column(name = "Dni",nullable = false,length = 8)
     private String Dni;
-    @Column(name = "Contrasena",nullable = false,length = 30)
-    private String Contrasena;
+    @Column(name = "Password",nullable = false,length = 500)
+    private String password;
     @Column(name = "Fecha_nacimiento",nullable = false)
     private LocalDate Fecha_Nacimiento;
     @Column(name = "Telefono",nullable = false,length = 13)
     private String Telefono;
     @Column(name = "Username",nullable = false,length = 30)
-    private String Username;
+    private String username;
+    @Column(name = "Enabled",nullable = false)
+    private boolean Enabled;
+
     @Column(name = "I_fecha_creacion",nullable = false)
     private LocalDate I_fecha_creacion;
     @Column(name = "I_fecha_modificacion",nullable = false)
@@ -39,31 +45,35 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "Id_departamento")
     private Departamento Dp;
-    @ManyToOne
-    @JoinColumn(name = "Id_rol")
-    private Rol Ro;
+
+    @JsonIgnore
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private List<Rol> roles;
+
 
     public Usuario() {
 
     }
 
-    public Usuario(int id_usuario, String nombre, String apellido, String correo, String sexo, String dni, String contrasena, LocalDate fecha_Nacimiento, String telefono, String username, LocalDate i_fecha_creacion, LocalDate i_fecha_modificacion, String i_creado_por, String i_modificado_por, Departamento dp, Rol ro) {
+    public Usuario(int id_usuario, String nombre, String apellido, String correo, String sexo, String dni, String password, LocalDate fecha_Nacimiento, String telefono, String username, boolean enabled, LocalDate i_fecha_creacion, LocalDate i_fecha_modificacion, String i_creado_por, String i_modificado_por, Departamento dp, List<Rol> roles) {
         Id_usuario = id_usuario;
         Nombre = nombre;
         Apellido = apellido;
         Correo = correo;
         Sexo = sexo;
         Dni = dni;
-        Contrasena = contrasena;
+        this.password = password;
         Fecha_Nacimiento = fecha_Nacimiento;
         Telefono = telefono;
-        Username = username;
+        this.username = username;
+        Enabled = enabled;
         I_fecha_creacion = i_fecha_creacion;
         I_fecha_modificacion = i_fecha_modificacion;
         I_creado_por = i_creado_por;
         I_modificado_por = i_modificado_por;
         Dp = dp;
-        Ro = ro;
+        this.roles = roles;
     }
 
     public int getId_usuario() {
@@ -114,13 +124,14 @@ public class Usuario {
         Dni = dni;
     }
 
-    public String getContrasena() {
-        return Contrasena;
+    public String getPassword() {
+        return this.password;
     }
 
-    public void setContrasena(String contrasena) {
-        Contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
 
     public LocalDate getFecha_Nacimiento() {
         return Fecha_Nacimiento;
@@ -139,11 +150,19 @@ public class Usuario {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
+    }
+
+    public boolean getEnabled() {
+        return Enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        Enabled = enabled;
     }
 
     public LocalDate getI_fecha_creacion() {
@@ -186,11 +205,11 @@ public class Usuario {
         Dp = dp;
     }
 
-    public Rol getRo() {
-        return Ro;
+    public List<Rol> getRoles() {
+        return roles;
     }
 
-    public void setRo(Rol ro) {
-        Ro = ro;
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 }

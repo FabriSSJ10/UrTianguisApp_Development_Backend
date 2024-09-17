@@ -37,4 +37,9 @@ public class OutfitServiceImplements implements IOutfitService{
     public void delete(int id) {
         oR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> obtenerCantidad() {
+        return oR.cantidad();
+    }
 }

@@ -33,5 +33,13 @@ public class PedidoServiceImplements implements IPedidoService {
     public void delete(int id) {
         pR.deleteById(id);
     }
+    @Override
+    public List<String[]> totalpedidopormes() {
+        return pR.totalpedidopormes();
+    }
+    @Override
+    public List<String[]> totalpedidopordepartamento() {
+        return pR.totalpedidopordepartamentos();
+    }
 
 }

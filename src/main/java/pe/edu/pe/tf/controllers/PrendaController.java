@@ -2,6 +2,7 @@ package pe.edu.pe.tf.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.*;
 import pe.edu.pe.tf.entities.Prenda;
@@ -17,14 +18,15 @@ import java.util.stream.Collectors;
 public class PrendaController {
     @Autowired
     private IPrendaService pR;
-    @GetMapping
+    @GetMapping("/listarPrendas")
     public List<PrendaDTO> listar(){
         return pR.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
             return m.map(x, PrendaDTO.class);
         }).collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping("/registrarPrendas")
+    @PreAuthorize("hasAuthority('VENDEDOR')")
     public void insertar(@RequestBody PrendaDTO dto){
         ModelMapper m=new ModelMapper();
         Prenda ve=m.map(dto,Prenda.class);
@@ -38,13 +40,15 @@ public class PrendaController {
         return dto;
     }
 
-    @PutMapping
+    @PutMapping("/modificarPrendas")
+    @PreAuthorize("hasAuthority('VENDEDOR')")
     public void modificar(@RequestBody PrendaDTO dto){
         ModelMapper m=new ModelMapper();
         Prenda ve=m.map(dto,Prenda.class);
         pR.update(ve);
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('VENDEDOR')")
     public void eliminar(@PathVariable("id") Integer id){
         pR.delete(id);
     }

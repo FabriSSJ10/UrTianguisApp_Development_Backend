@@ -20,7 +20,7 @@ public class Departamento {
         Id_departamento = id_departamento;
     }
 
-    public int getId_pais() {
+    public int getId_departamento() {
         return Id_departamento;
     }
 

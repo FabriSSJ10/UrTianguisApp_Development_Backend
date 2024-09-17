@@ -17,6 +17,9 @@ public class UsuarioServiceImplements implements IUsuarioService {
     public List<Usuario> list() {return uR.findAll();}
 
     @Override
+    public List<Usuario> listarUsuariosVendedores() {return uR.findAll();}
+
+    @Override
     public void insert(Usuario u) {
         uR.save(u);
     }
