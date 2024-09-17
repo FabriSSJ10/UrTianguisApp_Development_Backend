@@ -2,6 +2,7 @@ package pe.edu.pe.tf.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.NotificacionesDTO;
 import pe.edu.pe.tf.entities.Notificaciones;
@@ -11,18 +12,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/notificaciones")
+@PreAuthorize("hasAnyAuthority('ADMINISTRADOR','VENDEDOR')")
+@RequestMapping("/notificacion")
 public class NotificacionesController {
     @Autowired
     private INotificacionesService nR;
-    @GetMapping
+    @GetMapping("/listarNotificaciones")
     public List<NotificacionesDTO>listar(){
         return nR.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
             return m.map(x,NotificacionesDTO.class);
         }).collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping("/registrarNotificaciones")
     public void insertar(@RequestBody NotificacionesDTO dto){
         ModelMapper m=new ModelMapper();
         Notificaciones us=m.map(dto,Notificaciones.class);
@@ -36,7 +38,7 @@ public class NotificacionesController {
         return dto;
     }
 
-    @PutMapping
+    @PutMapping("/modificarNotificaciones")
     public void modificar(@RequestBody NotificacionesDTO dto){
         ModelMapper m=new ModelMapper();
         Notificaciones us=m.map(dto,Notificaciones.class);

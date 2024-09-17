@@ -4,15 +4,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 public class Tipo_PagoDTO {
-    private int Tipo_Pago;
+    private int Id_tipo_pago;
     private String Tipo;
 
-    public int getTipo_Pago() {
-        return Tipo_Pago;
+    public int getId_tipo_pago() {
+        return Id_tipo_pago;
     }
 
-    public void setTipo_Pago(int tipo_Pago) {
-        Tipo_Pago = tipo_Pago;
+    public void setId_tipo_pago(int id_tipo_pago) {
+        Id_tipo_pago = id_tipo_pago;
     }
 
     public String getTipo() {

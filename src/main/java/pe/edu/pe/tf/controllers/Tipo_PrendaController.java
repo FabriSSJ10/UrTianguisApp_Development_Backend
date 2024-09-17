@@ -2,6 +2,7 @@ package pe.edu.pe.tf.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.Tipo_PrendaDTO;
 import pe.edu.pe.tf.entities.Tipo_Prenda;
@@ -11,12 +12,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 @RequestMapping ("/tipo prenda")
 public class Tipo_PrendaController {
     @Autowired
     private ITipo_PrendaService rS;
 
-    @GetMapping
+    @GetMapping("/listarTipo_prenda")
     public List<Tipo_PrendaDTO> listar(){
         return rS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -24,7 +26,7 @@ public class Tipo_PrendaController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/registrarTipo_prenda")
     public void registrar(@RequestBody Tipo_PrendaDTO dto)
     {
         ModelMapper m=new ModelMapper();
@@ -38,7 +40,7 @@ public class Tipo_PrendaController {
         Tipo_PrendaDTO dto=m.map(rS.listId(id),Tipo_PrendaDTO.class);
         return dto;
     }
-    @PutMapping
+    @PutMapping("/modificarTipo_prenda")
     public void modificar(@RequestBody Tipo_PrendaDTO dto)
     {
         ModelMapper m=new ModelMapper();
