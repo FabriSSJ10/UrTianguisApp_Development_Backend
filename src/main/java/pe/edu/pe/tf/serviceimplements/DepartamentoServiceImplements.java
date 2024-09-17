@@ -24,17 +24,22 @@ public class DepartamentoServiceImplements implements IDepartamentoService {
     }
 
     @Override
-    public void delete(int idPais) {
-        dR.deleteById(idPais);
+    public void delete(int idDepartamento) {
+        dR.deleteById(idDepartamento);
     }
 
     @Override
-    public Departamento listId(int idPais) {
-        return dR.findById(idPais).orElse(new Departamento());
+    public Departamento listId(int idDepartamento) {
+        return dR.findById(idDepartamento).orElse(new Departamento());
     }
 
     @Override
     public void update(Departamento d) {
         dR.save(d);
+    }
+
+    @Override
+    public List<String[]> obtenercantidad() {
+        return dR.cantidad();
     }
 }

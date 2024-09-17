@@ -2,36 +2,48 @@ package pe.edu.pe.tf.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
-@Table(name = "rol")
-public class Rol {
+@Table(name = "roles", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "rol"})})
+public class Rol implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id_rol;
-    @Column(name = "Tipo_rol", nullable = false, length = 50)
-    private String Tipo_rol;
+    private int id_rol;
+    @Column(name = "Rol", nullable = false, length = 50)
+    private String rol;
 
-    public Rol() { }
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Usuario uS;
 
-    public Rol(int id_rol, String tipo_rol) {
-        Id_rol = id_rol;
-        Tipo_rol = tipo_rol;
+    public Rol() {
+
     }
 
     public int getId_rol() {
-        return Id_rol;
+        return id_rol;
     }
 
     public void setId_rol(int id_rol) {
-        Id_rol = id_rol;
+        this.id_rol = id_rol;
     }
 
-    public String getTipo_rol() {
-        return Tipo_rol;
+    public String getRol() {
+        return rol;
     }
 
-    public void setTipo_rol(String tipo_rol) {
-        Tipo_rol = tipo_rol;
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Usuario getuS() {
+        return uS;
+    }
+
+    public void setuS(Usuario uS) {
+        this.uS = uS;
     }
 }
 

@@ -2,6 +2,7 @@ package pe.edu.pe.tf.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.RolDTO;
 import pe.edu.pe.tf.entities.Rol;
@@ -11,17 +12,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 @RequestMapping("/rol")
 public class RolController {
     @Autowired
     private IRolService rS;
-    @PostMapping
+    @PostMapping("/registrarRoles")
     public  void registrar(@RequestBody RolDTO dto){
         ModelMapper m=new ModelMapper();
         Rol r = m.map(dto, Rol.class);
         rS.insert(r);
     }
-    @GetMapping
+    @GetMapping("/listarRoles")
     public List<RolDTO> listar(){
         return rS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -37,7 +39,7 @@ public class RolController {
         RolDTO dto = m.map(rS.listId(id), RolDTO.class);
         return dto;
     }
-    @PutMapping
+    @PutMapping("/modificarRoles")
     public  void modificar(@RequestBody RolDTO dto){
         ModelMapper m=new ModelMapper();
         Rol r = m.map(dto, Rol.class);

@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class Tipo_Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Tipo_Pago;
+    private int Id_tipo_pago;
     @Column(name = "Tipo", nullable = false, length = 20)
     private String Tipo;
 
@@ -16,17 +16,17 @@ public class Tipo_Pago {
 
     }
 
-    public Tipo_Pago(int tipo_Pago, String tipo) {
-        Tipo_Pago = tipo_Pago;
+    public Tipo_Pago(int id_tipo_pago, String tipo) {
+        Id_tipo_pago = id_tipo_pago;
         Tipo = tipo;
     }
 
-    public int getTipo_Pago() {
-        return Tipo_Pago;
+    public int getId_tipo_pago() {
+        return Id_tipo_pago;
     }
 
-    public void setTipo_Pago(int tipo_Pago) {
-        Tipo_Pago = tipo_Pago;
+    public void setId_tipo_pago(int id_tipo_pago) {
+        Id_tipo_pago = id_tipo_pago;
     }
 
     public String getTipo() {
