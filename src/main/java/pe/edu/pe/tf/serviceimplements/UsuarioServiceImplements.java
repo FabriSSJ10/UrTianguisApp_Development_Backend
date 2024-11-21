@@ -37,15 +37,15 @@ public class UsuarioServiceImplements implements IUsuarioService {
     }
 
     @Override
-    public String mesMenosUsuarios() {
-        List<Object[]> mesMenor = uR.mesMenosUsuarios();
+    public String Mes_menos_usuarios() {
+        List<Object[]> mesMenor = uR.Mes_menos_usuarios();
         if (!mesMenor.isEmpty()) {
             Object[] UsuarioxMes = mesMenor.get(0);
             String mes = (String) UsuarioxMes[0];
             long totalUsuarios= (long) UsuarioxMes[1];
             return ("Mes con menos usuarios: "+mes+" con "+ totalUsuarios+" usuarios");
         } else{
-            return ("no hay datos");
+            return ("No hay datos");
         }
     }
 }

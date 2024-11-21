@@ -37,4 +37,9 @@ public class DepartamentoServiceImplements implements IDepartamentoService {
     public void update(Departamento d) {
         dR.save(d);
     }
+
+    @Override
+    public List<String[]> Cantidad_usuarios_por_departamento() {
+        return dR.Cantidad_usuarios_por_departamento();
+    }
 }

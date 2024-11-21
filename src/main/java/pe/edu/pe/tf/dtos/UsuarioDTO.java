@@ -8,148 +8,157 @@ import pe.edu.pe.tf.entities.Rol;
 import java.time.LocalDate;
 
 public class UsuarioDTO {
-    private int Id_Usuario;
-    private String Nombre;
-    private String Apellido;
-    private String Correo;
-    private String Sexo;
-    private String Dni;
-    private String contrasena;
-    private LocalDate Fecha_Nacimiento;
-    private String Telefono;
-    private String Username;
-    private LocalDate I_fecha_creacion;
-    private LocalDate I_fecha_modificacion;
-    private String I_creado_por;
-    private String I_modificado_por;
-    private Departamento Dp;
-    private Rol Ro;
+    private int id_usuario;
+    private String nombre;
+    private String apellido;
+    private String correo;
+    private String sexo;
+    private String dni;
+    private String password;
+    private LocalDate fecha_Nacimiento;
+    private String telefono;
+    private String username;
+    private boolean enabled;
+    private LocalDate i_fecha_creacion;
+    private LocalDate i_fecha_modificacion;
+    private String i_creado_por;
+    private String i_modificado_por;
+    private Departamento dp;
+    private Rol ro;
 
-    public int getId_Usuario() {
-        return Id_Usuario;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setId_Usuario(int id_Usuario) {
-        Id_Usuario = id_Usuario;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public void setApellido(String apellido) {
-        Apellido = apellido;
+        this.apellido = apellido;
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
     public void setCorreo(String correo) {
-        Correo = correo;
+        this.correo = correo;
     }
 
     public String getSexo() {
-        return Sexo;
+        return sexo;
     }
 
     public void setSexo(String sexo) {
-        Sexo = sexo;
+        this.sexo = sexo;
     }
 
     public String getDni() {
-        return Dni;
+        return dni;
     }
 
     public void setDni(String dni) {
-        Dni = dni;
+        this.dni = dni;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public LocalDate getFecha_Nacimiento() {
-        return Fecha_Nacimiento;
+        return fecha_Nacimiento;
     }
 
     public void setFecha_Nacimiento(LocalDate fecha_Nacimiento) {
-        Fecha_Nacimiento = fecha_Nacimiento;
+        this.fecha_Nacimiento = fecha_Nacimiento;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
-        Telefono = telefono;
+        this.telefono = telefono;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public LocalDate getI_fecha_creacion() {
-        return I_fecha_creacion;
+        return i_fecha_creacion;
     }
 
     public void setI_fecha_creacion(LocalDate i_fecha_creacion) {
-        I_fecha_creacion = i_fecha_creacion;
+        this.i_fecha_creacion = i_fecha_creacion;
     }
 
     public LocalDate getI_fecha_modificacion() {
-        return I_fecha_modificacion;
+        return i_fecha_modificacion;
     }
 
     public void setI_fecha_modificacion(LocalDate i_fecha_modificacion) {
-        I_fecha_modificacion = i_fecha_modificacion;
+        this.i_fecha_modificacion = i_fecha_modificacion;
     }
 
     public String getI_creado_por() {
-        return I_creado_por;
+        return i_creado_por;
     }
 
     public void setI_creado_por(String i_creado_por) {
-        I_creado_por = i_creado_por;
+        this.i_creado_por = i_creado_por;
     }
 
     public String getI_modificado_por() {
-        return I_modificado_por;
+        return i_modificado_por;
     }
 
     public void setI_modificado_por(String i_modificado_por) {
-        I_modificado_por = i_modificado_por;
+        this.i_modificado_por = i_modificado_por;
     }
 
     public Departamento getDp() {
-        return Dp;
+        return dp;
     }
 
     public void setDp(Departamento dp) {
-        Dp = dp;
+        this.dp = dp;
     }
 
     public Rol getRo() {
-        return Ro;
+        return ro;
     }
 
     public void setRo(Rol ro) {
-        Ro = ro;
+        this.ro = ro;
     }
 }

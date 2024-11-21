@@ -12,18 +12,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
     @Autowired
     private IUsuarioService uS;
-    @GetMapping
+    @GetMapping()
     public List<UsuarioDTO>listar(){
         return uS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
             return m.map(x,UsuarioDTO.class);
         }).collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping()
     public void insertar(@RequestBody UsuarioDTO dto){
         ModelMapper m=new ModelMapper();
         Usuario us=m.map(dto,Usuario.class);
@@ -31,13 +31,13 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public TiendaDTO listarId(@PathVariable("id") Integer id){
+    public UsuarioDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
-        TiendaDTO dto=m.map(uS.listId(id),TiendaDTO.class);
+        UsuarioDTO dto=m.map(uS.listId(id),UsuarioDTO.class);
         return dto;
     }
 
-    @PutMapping
+    @PutMapping()
     public void modificar(@RequestBody UsuarioDTO dto){
         ModelMapper m=new ModelMapper();
         Usuario us=m.map(dto,Usuario.class);
@@ -47,7 +47,7 @@ public class UsuarioController {
     public void eliminar(@PathVariable("id")Integer id){uS.delete(id);}
 
     @GetMapping("/Mes_menos_usuarios")
-    public String MesMenosUsuarios(){
-        return uS.mesMenosUsuarios();
+    public String Mes_menos_usuarios(){
+        return uS.Mes_menos_usuarios();
     }
 }

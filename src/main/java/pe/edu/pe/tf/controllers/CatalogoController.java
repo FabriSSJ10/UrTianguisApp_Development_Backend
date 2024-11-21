@@ -4,28 +4,25 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.CatalogoDTO;
-import pe.edu.pe.tf.dtos.Det_PedidoDTO;
 import pe.edu.pe.tf.entities.Catalogo;
-import pe.edu.pe.tf.entities.Det_Pedido;
 import pe.edu.pe.tf.serviceinterface.ICatalogoService;
-import pe.edu.pe.tf.serviceinterface.IDet_PedidoService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/catalogo")
+@RequestMapping("/catalogos")
 public class CatalogoController {
     @Autowired
     private ICatalogoService cP;
-    @GetMapping
+    @GetMapping()
     public List<CatalogoDTO> listar(){
         return cP.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
             return m.map(x,CatalogoDTO.class);
         }).collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping()
     public void insertar(@RequestBody CatalogoDTO dto){
         ModelMapper m=new ModelMapper();
         Catalogo ve=m.map(dto, Catalogo.class);
@@ -37,7 +34,7 @@ public class CatalogoController {
         CatalogoDTO dto=m.map(cP.listId(id),CatalogoDTO.class);
         return dto;
     }
-    @PutMapping
+    @PutMapping()
     public void modificar(@RequestBody CatalogoDTO dto){
         ModelMapper m=new ModelMapper();
         Catalogo ve=m.map(dto,Catalogo.class);

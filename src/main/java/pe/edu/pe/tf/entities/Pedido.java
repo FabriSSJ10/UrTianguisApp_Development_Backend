@@ -6,116 +6,116 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="pedido")
+@Table(name="Pedido")
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id_pedido;
+    private int id_pedido;
     @Column(name = "Estado_pedido",nullable = false, length = 20)
-    private String Estado_pedido;
+    private String estado_pedido;
     @Column(name = "Fecha_solicitud",nullable = false)
-    private LocalDate Fecha_solicitud;
+    private LocalDate fecha_solicitud;
     @Column(name = "Fecha_entrega",nullable = false,length = 10)
-    private LocalDateTime Fecha_entrega;
-    @Column(name = "I_fecha_creacion\n",nullable = false,length = 10)
-    private LocalDate I_fecha_creacion;
+    private LocalDateTime fecha_entrega;
+    @Column(name = "I_fecha_creacion",nullable = false,length = 10)
+    private LocalDate i_fecha_creacion;
     @Column(name = "I_creado_por",nullable = false, length = 40)
-    private String I_creado_por;
+    private String i_creado_por;
     @OneToOne
     @JoinColumn(name = "Id_pago")
-    private Pago Pa;
+    private Pago pa;
     @ManyToOne
     @JoinColumn(name = "Id_usuario")
-    private Usuario Us;
+    private Usuario us;
     @ManyToOne
     @JoinColumn(name = "Id_notificacion")
-    private Notificaciones Nt;
+    private Notificacion no;
 
     public Pedido() {
 
     }
 
-    public Pedido(int id_pedido, String estado_pedido, LocalDate fecha_solicitud, LocalDateTime fecha_entrega, LocalDate i_fecha_creacion, String i_creado_por, Pago pa, Usuario us, Notificaciones nt) {
-        Id_pedido = id_pedido;
-        Estado_pedido = estado_pedido;
-        Fecha_solicitud = fecha_solicitud;
-        Fecha_entrega = fecha_entrega;
-        I_fecha_creacion = i_fecha_creacion;
-        I_creado_por = i_creado_por;
-        Pa = pa;
-        Us = us;
-        Nt = nt;
+    public Pedido(int id_pedido, String estado_pedido, LocalDate fecha_solicitud, LocalDateTime fecha_entrega, LocalDate i_fecha_creacion, String i_creado_por, Pago pa, Usuario us, Notificacion no) {
+        this.id_pedido = id_pedido;
+        this.estado_pedido = estado_pedido;
+        this.fecha_solicitud = fecha_solicitud;
+        this.fecha_entrega = fecha_entrega;
+        this.i_fecha_creacion = i_fecha_creacion;
+        this.i_creado_por = i_creado_por;
+        this.pa = pa;
+        this.us = us;
+        this.no = no;
     }
 
     public int getId_pedido() {
-        return Id_pedido;
+        return id_pedido;
     }
 
     public void setId_pedido(int id_pedido) {
-        Id_pedido = id_pedido;
+        this.id_pedido = id_pedido;
     }
 
     public String getEstado_pedido() {
-        return Estado_pedido;
+        return estado_pedido;
     }
 
     public void setEstado_pedido(String estado_pedido) {
-        Estado_pedido = estado_pedido;
+        this.estado_pedido = estado_pedido;
     }
 
     public LocalDate getFecha_solicitud() {
-        return Fecha_solicitud;
+        return fecha_solicitud;
     }
 
     public void setFecha_solicitud(LocalDate fecha_solicitud) {
-        Fecha_solicitud = fecha_solicitud;
+        this.fecha_solicitud = fecha_solicitud;
     }
 
     public LocalDateTime getFecha_entrega() {
-        return Fecha_entrega;
+        return fecha_entrega;
     }
 
     public void setFecha_entrega(LocalDateTime fecha_entrega) {
-        Fecha_entrega = fecha_entrega;
+        this.fecha_entrega = fecha_entrega;
     }
 
     public LocalDate getI_fecha_creacion() {
-        return I_fecha_creacion;
+        return i_fecha_creacion;
     }
 
     public void setI_fecha_creacion(LocalDate i_fecha_creacion) {
-        I_fecha_creacion = i_fecha_creacion;
+        this.i_fecha_creacion = i_fecha_creacion;
     }
 
     public String getI_creado_por() {
-        return I_creado_por;
+        return i_creado_por;
     }
 
     public void setI_creado_por(String i_creado_por) {
-        I_creado_por = i_creado_por;
+        this.i_creado_por = i_creado_por;
     }
 
     public Pago getPa() {
-        return Pa;
+        return pa;
     }
 
     public void setPa(Pago pa) {
-        Pa = pa;
+        this.pa = pa;
     }
 
     public Usuario getUs() {
-        return Us;
+        return us;
     }
 
     public void setUs(Usuario us) {
-        Us = us;
+        this.us = us;
     }
 
-    public Notificaciones getNt() {
-        return Nt;
+    public Notificacion getNo() {
+        return no;
     }
 
-    public void setNt(Notificaciones nt) {
-        Nt = nt;
+    public void setNo(Notificacion no) {
+        this.no = no;
     }
 }

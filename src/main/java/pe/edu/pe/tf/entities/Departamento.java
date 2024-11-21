@@ -7,32 +7,32 @@ import jakarta.persistence.*;
 public class Departamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id_pais;
+    private int id_departamento;
     @Column(name = "Departamento",nullable = false,length = 80)
-    private String Departamento;
+    private String departamento;
 
     public Departamento()
     {
     }
 
-    public Departamento(String departamento, int id_pais) {
-        Departamento = departamento;
-        Id_pais = id_pais;
+    public Departamento(int id_departamento, String departamento) {
+        this.id_departamento = id_departamento;
+        this.departamento = departamento;
     }
 
-    public int getId_pais() {
-        return Id_pais;
+    public int getId_departamento() {
+        return id_departamento;
     }
 
-    public void setId_pais(int id_pais) {
-        Id_pais = id_pais;
+    public void setId_departamento(int id_departamento) {
+        this.id_departamento = id_departamento;
     }
 
     public String getDepartamento() {
-        return Departamento;
+        return departamento;
     }
 
     public void setDepartamento(String departamento) {
-        Departamento = departamento;
+        this.departamento = departamento;
     }
 }

@@ -11,4 +11,5 @@ public interface IOutfitService {
     public Outfit listId(int id);
     public void update (Outfit o);
     public void delete (int o);
+    public List<String[]>Cantidad_outfits_por_prenda();
 }

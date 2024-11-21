@@ -38,4 +38,21 @@ public class PagoServiceImplements implements IPagoService {
     public void delete(int id) {
         pR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> Monto_total_pagos_por_sexo() {
+        return pR.Monto_total_pagos_por_sexo();
+    }
+
+    @Override
+    public List<String[]> Monto_total_pagos_por_departamento() {
+        return pR.Monto_total_pagos_por_departamento();
+    }
+
+    @Override
+    public List<String[]> Cantidad_pagos_por_tipo_pago(){return pR.Cantidad_pagos_por_tipo_pago();}
+
+    @Override
+    public List<String[]>Cantidad_pagos_por_tipo_pago_y_mes(){return pR.Cantidad_pagos_por_tipo_pago_y_mes();}
+
 }

@@ -3,35 +3,49 @@ package pe.edu.pe.tf.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "rol")
+@Table(name = "Rol")
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id_rol;
+    private int id_rol;
     @Column(name = "Tipo_rol", nullable = false, length = 50)
-    private String Tipo_rol;
+    private String rol;
 
-    public Rol() { }
+    @ManyToOne
+    @JoinColumn(name = "Id_usuario", referencedColumnName = "id_usuario")
+    private Usuario uS;
 
-    public Rol(int id_rol, String tipo_rol) {
-        Id_rol = id_rol;
-        Tipo_rol = tipo_rol;
+    public Rol() {
+    }
+
+    public Rol(int id_rol, String rol, Usuario uS) {
+        this.id_rol = id_rol;
+        this.rol = rol;
+        this.uS = uS;
     }
 
     public int getId_rol() {
-        return Id_rol;
+        return id_rol;
     }
 
     public void setId_rol(int id_rol) {
-        Id_rol = id_rol;
+        this.id_rol = id_rol;
     }
 
-    public String getTipo_rol() {
-        return Tipo_rol;
+    public String getRol() {
+        return rol;
     }
 
-    public void setTipo_rol(String tipo_rol) {
-        Tipo_rol = tipo_rol;
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Usuario getuS() {
+        return uS;
+    }
+
+    public void setuS(Usuario uS) {
+        this.uS = uS;
     }
 }
 

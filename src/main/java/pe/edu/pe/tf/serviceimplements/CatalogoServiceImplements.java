@@ -3,10 +3,7 @@ package pe.edu.pe.tf.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.pe.tf.entities.Catalogo;
-import pe.edu.pe.tf.entities.Det_Pedido;
-import pe.edu.pe.tf.entities.Outfit;
 import pe.edu.pe.tf.repositories.ICatalogoRepository;
-import pe.edu.pe.tf.repositories.IDet_PedidoRepository;
 import pe.edu.pe.tf.serviceinterface.ICatalogoService;
 
 import java.util.List;

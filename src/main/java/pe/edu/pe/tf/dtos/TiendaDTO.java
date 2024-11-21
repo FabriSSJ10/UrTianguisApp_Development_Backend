@@ -4,50 +4,61 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import pe.edu.pe.tf.entities.Usuario;
 
+import java.math.BigDecimal;
+
 public class TiendaDTO {
-    private int Id_tienda;
-    private String Nombre;
-    private String Ubicacion;
-    private String Logo;
-    private Usuario Us;
+    private int id_tienda;
+    private String nombre;
+    private BigDecimal altitud;
+    private BigDecimal latitud;
+    private String logo;
+    private Usuario us;
 
     public int getId_tienda() {
-        return Id_tienda;
+        return id_tienda;
     }
 
     public void setId_tienda(int id_tienda) {
-        Id_tienda = id_tienda;
+        this.id_tienda = id_tienda;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
-    public String getUbicacion() {
-        return Ubicacion;
+    public BigDecimal getAltitud() {
+        return altitud;
     }
 
-    public void setUbicacion(String ubicacion) {
-        Ubicacion = ubicacion;
+    public void setAltitud(BigDecimal altitud) {
+        this.altitud = altitud;
+    }
+
+    public BigDecimal getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(BigDecimal latitud) {
+        this.latitud = latitud;
     }
 
     public String getLogo() {
-        return Logo;
+        return logo;
     }
 
     public void setLogo(String logo) {
-        Logo = logo;
+        this.logo = logo;
     }
 
     public Usuario getUs() {
-        return Us;
+        return us;
     }
 
     public void setUs(Usuario us) {
-        Us = us;
+        this.us = us;
     }
 }

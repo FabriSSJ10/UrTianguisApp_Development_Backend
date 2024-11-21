@@ -9,5 +9,5 @@ public interface IUsuarioService {
     public void update(Usuario u);
     public void delete(int id);
     public Usuario listId(int id);
-    public String mesMenosUsuarios();
+    public String Mes_menos_usuarios();
 }

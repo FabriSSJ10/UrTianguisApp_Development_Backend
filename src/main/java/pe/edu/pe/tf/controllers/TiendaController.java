@@ -11,18 +11,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/tienda")
+@RequestMapping("/tiendas")
 public class TiendaController {
     @Autowired
     private ITiendaService tR;
-    @GetMapping
+    @GetMapping()
     public List<TiendaDTO>listar(){
         return tR.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
             return m.map(x,TiendaDTO.class);
         }).collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping()
     public void insertar(@RequestBody TiendaDTO dto){
         ModelMapper m=new ModelMapper();
         Tienda ve=m.map(dto,Tienda.class);
@@ -36,7 +36,7 @@ public class TiendaController {
         return dto;
     }
 
-    @PutMapping
+    @PutMapping()
     public void modificar(@RequestBody TiendaDTO dto){
         ModelMapper m=new ModelMapper();
         Tienda ve=m.map(dto,Tienda.class);

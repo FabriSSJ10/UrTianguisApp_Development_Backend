@@ -34,4 +34,14 @@ public class PedidoServiceImplements implements IPedidoService {
         pR.deleteById(id);
     }
 
+    @Override
+    public List<String[]> Total_pedidos_por_mes() {
+        return pR.Total_pedidos_por_mes();
+    }
+
+    @Override
+    public List<String[]> Total_pedidos_por_departamento() {
+        return pR.Total_pedidos_por_departamento();
+    }
+
 }

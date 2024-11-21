@@ -3,46 +3,46 @@ package pe.edu.pe.tf.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.pe.tf.dtos.Tipo_PrendaDTO;
-import pe.edu.pe.tf.entities.Tipo_Prenda;
-import pe.edu.pe.tf.serviceinterface.ITipo_PrendaService;
+import pe.edu.pe.tf.dtos.Tipo_prendaDTO;
+import pe.edu.pe.tf.entities.Tipo_prenda;
+import pe.edu.pe.tf.serviceinterface.ITipo_prendaService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping ("/tipo prenda")
+@RequestMapping ("/tipos_prenda")
 public class Tipo_PrendaController {
     @Autowired
-    private ITipo_PrendaService rS;
+    private ITipo_prendaService rS;
 
-    @GetMapping
-    public List<Tipo_PrendaDTO> listar(){
+    @GetMapping()
+    public List<Tipo_prendaDTO> listar(){
         return rS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
-            return m.map(x, Tipo_PrendaDTO.class);
+            return m.map(x, Tipo_prendaDTO.class);
         }).collect(Collectors.toList());
     }
 
-    @PostMapping
-    public void registrar(@RequestBody Tipo_PrendaDTO dto)
+    @PostMapping()
+    public void registrar(@RequestBody Tipo_prendaDTO dto)
     {
         ModelMapper m=new ModelMapper();
-        Tipo_Prenda ve=m.map(dto,Tipo_Prenda.class);
+        Tipo_prenda ve=m.map(dto, Tipo_prenda.class);
         rS.insert(ve);
     }
 
     @GetMapping("/{id}")
-    public Tipo_PrendaDTO listarId(@PathVariable("id") Integer id){
+    public Tipo_prendaDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
-        Tipo_PrendaDTO dto=m.map(rS.listId(id),Tipo_PrendaDTO.class);
+        Tipo_prendaDTO dto=m.map(rS.listId(id), Tipo_prendaDTO.class);
         return dto;
     }
-    @PutMapping
-    public void modificar(@RequestBody Tipo_PrendaDTO dto)
+    @PutMapping()
+    public void modificar(@RequestBody Tipo_prendaDTO dto)
     {
         ModelMapper m=new ModelMapper();
-        Tipo_Prenda ve=m.map(dto, Tipo_Prenda.class);
+        Tipo_prenda ve=m.map(dto, Tipo_prenda.class);
         rS.update(ve);
     }
     @DeleteMapping("/{id}")

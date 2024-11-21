@@ -11,17 +11,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/rol")
+@RequestMapping("/roles")
 public class RolController {
     @Autowired
     private IRolService rS;
-    @PostMapping
+    @PostMapping()
     public  void registrar(@RequestBody RolDTO dto){
         ModelMapper m=new ModelMapper();
         Rol r = m.map(dto, Rol.class);
         rS.insert(r);
     }
-    @GetMapping
+    @GetMapping()
     public List<RolDTO> listar(){
         return rS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -37,7 +37,7 @@ public class RolController {
         RolDTO dto = m.map(rS.listId(id), RolDTO.class);
         return dto;
     }
-    @PutMapping
+    @PutMapping()
     public  void modificar(@RequestBody RolDTO dto){
         ModelMapper m=new ModelMapper();
         Rol r = m.map(dto, Rol.class);

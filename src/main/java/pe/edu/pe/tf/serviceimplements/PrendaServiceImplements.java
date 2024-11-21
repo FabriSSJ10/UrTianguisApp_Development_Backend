@@ -33,4 +33,6 @@ public class PrendaServiceImplements implements IPrendaService {
     public void delete(int id) {
         pR.deleteById(id);
     }
+    @Override
+    public List<String[]> Cantidad_prendas_por_tienda(){return pR.Cantidad_prendas_por_tienda();};
 }

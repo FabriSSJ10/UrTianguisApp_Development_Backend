@@ -11,4 +11,6 @@ public interface IPedidoService {
     public Pedido listId(int id);
     public void update(Pedido p);
     public void delete(int id);
+    List<String[]>Total_pedidos_por_mes();
+    List<String[]>Total_pedidos_por_departamento();
 }
